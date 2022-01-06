@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% load static %}
+
+{% block title %}
+
+    <title>Созданные квизы</title>
+
+{% endblock %}
+
+{% block content %}
+
+{% if quizes %}
+
+    {% for quiz in quizes %}
+
+    <p>
+        <span  ><a href="{% url 'own_quiz' type='custom_quiz' pk=quiz.pk%}">{{ quiz.title }}</a></span>
+        <span ><a href="{% url 'delete'  pk=quiz.pk%}">Удалить</a></span>
+
+    </p>
+
+    {% endfor %}
+
+{% else %}
+
+<div >У вас нет созданных квизов!</div>
+
+{% endif %}
+
+<div ><a href="{% url 'show_first_page'  %}">На главную страницу</a></div>
+
+{% endblock %}

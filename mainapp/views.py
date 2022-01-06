@@ -1,9 +1,11 @@
+from django.core.paginator import Paginator
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 
 from mainapp.forms import CreateQuizForm, CreateQuestionForm
 from mainapp.models import UserAnswers, UserQuestion, UserQuiz, UserChoice
+from mainapp.my_quiz import Myquiz
 from quiz.dto import QuizDTO, QuestionDTO, ChoiceDTO
 
 
@@ -79,6 +81,41 @@ def create_questions(request):
     form_a = choice_formset(queryset=UserChoice.objects.none())
     context = {'form': form, 'form_a': form_a}
     return render(request, 'mainapp/create_questions.html', context)
+
+
+def show_own_quiz(request, type, pk):
+    """
+    Функция-обработчик страницы прохождения квиза
+    """
+    if type == 'custom_quiz':
+        current_quiz = create_own_quiz(request)
+    else:
+        current_quiz = Myquiz
+    my_questions = current_quiz.questions
+    for question in my_questions:
+        UserAnswers.objects.update_or_create(question_uuid=question.uuid)
+    paginator = Paginator(my_questions, 1)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    current_question_uuid = ''
+    for question in page.object_list:
+        current_question_uuid = question.uuid
+    current_question = UserAnswers.objects.get(question_uuid=current_question_uuid).answer
+    context = {"my_questions": page.object_list, 'page': page, 'current_question': current_question, }
+    if request.method == "POST":
+        user_answer = request.POST.getlist("question_choice")
+        next_question = request.POST.get("next")
+        previous_question = request.POST.get("previous")
+        question_uuid = request.POST.get("question_uuid")
+        UserAnswers.objects.update_or_create(question_uuid=question_uuid, defaults={"answer": user_answer})
+        if previous_question != None:
+            redirect_page = request.path_info + "?page=" + str(page.previous_page_number())
+        elif next_question != None:
+            redirect_page = request.path_info + "?page=" + str(page.next_page_number())
+        else:
+            redirect_page = '/result/' + type + '/' + pk
+        return redirect(redirect_page)
+    return render(request, 'mainapp/own_quiz.html', context)
 
 
 class CreatedQuizesListView(ListView):
