@@ -1,5 +1,7 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
+
 from mainapp.forms import CreateQuizForm, CreateQuestionForm
 from mainapp.models import UserAnswers, UserQuestion, UserQuiz, UserChoice
 
@@ -52,3 +54,16 @@ def create_questions(request):
     form_a = choice_formset(queryset=UserChoice.objects.none())
     context = {'form': form, 'form_a': form_a}
     return render(request, 'mainapp/create_questions.html', context)
+
+
+class CreatedQuizesListView(ListView):
+    """
+    Класс для отображения страницы со списком созданных квизов
+    """
+    model = UserQuiz
+    template_name = 'mainapp/created_quizes_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['quizes'] = UserQuiz.objects.all().order_by('title')
+        return context
