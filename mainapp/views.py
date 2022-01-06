@@ -4,6 +4,7 @@ from django.views.generic import ListView
 
 from mainapp.forms import CreateQuizForm, CreateQuestionForm
 from mainapp.models import UserAnswers, UserQuestion, UserQuiz, UserChoice
+from quiz.dto import QuizDTO, QuestionDTO, ChoiceDTO
 
 
 def create_quiz(request):
@@ -18,6 +19,30 @@ def create_quiz(request):
     form = CreateQuizForm()
     context = {'form': form}
     return render(request, 'mainapp/create_quiz.html', context)
+
+
+def create_own_quiz(request):
+    """
+    Функция для создания QuizDTO из базы данных
+    """
+    path = request.get_full_path().split('/')[3]
+    if path.find("?") != -1:
+        current_quiz_pk = path[0:path.find("?")]
+    else:
+        current_quiz_pk = path
+    current_quiz = UserQuiz.objects.get(pk=current_quiz_pk)
+    own_questions = []
+    OwnQuiz = QuizDTO(str(current_quiz.pk), current_quiz.title, own_questions)
+    for one_question in current_quiz.question.all():
+        own_choices = []
+        for one_choice in one_question.choice.all():
+            own_choices.append(ChoiceDTO(uuid=str(current_quiz.pk) + '-' + str(one_question.pk)
+                                              + '-' + str(one_choice.pk), text=one_choice.text,
+                                         is_correct=one_choice.is_correct))
+        own_questions.append(
+            QuestionDTO(uuid=str(current_quiz.pk) + '-' + str(one_question.pk), text=one_question.text,
+                        choices=own_choices))
+    return OwnQuiz
 
 
 def show_first_page(request):
