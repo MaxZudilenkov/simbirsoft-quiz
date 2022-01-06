@@ -1,5 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from mainapp.forms import CreateQuizForm
 from mainapp.models import UserAnswers, UserQuestion, UserQuiz
+
+
+def create_quiz(request):
+    """
+    Функция для создания экземпляра модели UserQuiz
+    """
+    if request.method == 'POST':
+        form = CreateQuizForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('create_question')
+    form = CreateQuizForm()
+    context = {'form': form}
+    return render(request, 'mainapp/create_quiz.html', context)
 
 
 def show_first_page(request):
