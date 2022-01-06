@@ -67,3 +67,12 @@ class CreatedQuizesListView(ListView):
         context = super().get_context_data(**kwargs)
         context['quizes'] = UserQuiz.objects.all().order_by('title')
         return context
+
+
+def delete_quiz(request, pk):
+    """
+    Функция для удаления квизов
+    """
+    quiz = UserQuiz.objects.get(pk=pk)
+    quiz.delete()
+    return redirect('created_quizes')
