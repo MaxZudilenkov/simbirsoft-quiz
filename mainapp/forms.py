@@ -1,6 +1,6 @@
 from django import forms
 
-from mainapp.models import UserQuiz, UserQuestion
+from mainapp.models import UserQuiz, UserQuestion, UserChoice
 
 
 class CreateQuizForm(forms.ModelForm):
@@ -17,3 +17,11 @@ class CreateQuestionForm(forms.ModelForm):
         fields = ('quiz', 'text')
         widgets = {'quiz': forms.HiddenInput(),
                    'text': forms.TextInput(attrs={'class': 'question_title', "placeholder": "Введите вопрос..."}), }
+
+
+class CreateChoiceForm(forms.ModelForm):
+    class Meta:
+        model = UserChoice
+        fields = ('question', 'text', 'is_correct')
+        widgets = {'question': forms.HiddenInput(), }
+        exclude = ('question',)
