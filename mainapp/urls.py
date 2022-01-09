@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.urls import path
 
-from mainapp.views import show_first_page, create_quiz, create_questions, CreatedQuizesListView, show_own_quiz
+from mainapp.views import show_first_page, create_quiz, create_questions, CreatedQuizesListView, show_own_quiz, \
+    delete_quiz
 
 urlpatterns = [
 
@@ -10,6 +11,6 @@ urlpatterns = [
     path('create_question/', create_questions, name="create_question"),
     path('created_quizes/', CreatedQuizesListView.as_view(), name='created_quizes'),
     path('own_quiz/<str:type>/<str:pk>', show_own_quiz, name="own_quiz"),
-
+    path('delete/<int:pk>', delete_quiz, name="delete"),
 
 ]
