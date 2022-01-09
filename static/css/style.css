@@ -1,0 +1,144 @@
+.greetings {
+    background:cadetblue;
+    font-size: x-large;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.start_test {
+    display: inline-block;
+    background-color: #64d943;
+    font-size: xx-large;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.create_quiz {
+    display: inline-block;
+    background-color: #d9c543;
+    font-size: xx-large;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.run_quiz {
+    display: inline-block;
+    background-color: #ec67a5;
+    font-size: xx-large;
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.created_quiz {
+    display: inline-block;
+    background-color: #a9ffa0;
+    font-size: xx-large;
+    position: absolute;
+    top: 70%;
+    left: 68%;
+    margin-right: -20%;
+    transform: translate(-50%, -50%)
+}
+
+.question {
+    font-size: 30px;
+    font-family: Verdana;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+}
+
+.choise {
+    font-size: 20px;
+    position: relative;
+    top: 300px;
+    left: 200px;
+}
+
+.button {
+    color: #64d943;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+}
+
+label input[type='checkbox'] {
+    margin-left: 10px;
+}
+
+.pagination_button_next {
+    font-size: 25px;
+    text-decoration: none;
+    color: #1a79c1;
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    padding-right: 20px;
+}
+
+.pagination_button_previous {
+    font-size: 25px;
+    text-decoration: none;
+    color: #1a79c1;
+    position: absolute;
+    top: 70%;
+    left: 35%;
+    padding-right: 20px;
+}
+
+.finish_test {
+    display: inline-block;
+    background-color: #adf5dc;
+    font-size: xx-large;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.result {
+    font-size: x-large;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.percent {
+    color: #0055ff;
+    font-size: 50px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.restart {
+    display: inline-block;
+    font-size: xx-large;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.restart a {
+    text-decoration: none;
+    color: #2a9102;
+}

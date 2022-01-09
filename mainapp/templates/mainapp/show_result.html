@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    <title>Результат теста</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <div  >Вы прошли тест с результатом:</div>
+
+    <div >{{ percent }} %</div>
+
+     <a  href="{% url 'show_first_page' %}">НА ГЛАВНУЮ СТРАНИЦУ</a>
+
+{% endblock %}
