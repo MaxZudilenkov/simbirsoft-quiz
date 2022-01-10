@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    <title>Тест</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <form method="POST">
+    {% csrf_token %}
+
+        {% for question in my_questions %}
+
+            <div class="question">
+                <label><input type="hidden" name="question_uuid" value={{ question.uuid }}></label>
+                <p>{{ question.text }}</p>
+            </div>
+
+            {% for choice in question.choices %}
+
+                <div class="choise">
+                    {% if choice.uuid  in current_question %}
+                        <p>
+                            <label> <input type="checkbox" checked name="question_choice"
+                                           value={{ choice.uuid }}>{{ choice.text }}</label>
+                        </p>
+
+                    {% else %}
+                        <p>
+                            <label><input type="checkbox" name="question_choice"
+                                          value={{ choice.uuid }}>{{ choice.text }}</label>
+                        </p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        {% endfor %}
+
+        {% if page.number == page.paginator.num_pages %}
+
+            <div class="finish_test">
+                <button type="submit" class="btn btn-success" name="finish_test">ЗАВЕРШИТЬ ТЕСТ</button>
+            </div>
+
+        {% endif %}
+
+        {% if page.has_previous %}
+
+            <button type="submit" class="pagination_button_previous" name="previous">Предыдущий вопрос</button>
+
+        {% endif %}
+
+        {% if page.has_next %}
+
+            <button type="submit" class="pagination_button_next" name="next">Следующий вопрос</button>
+
+        {% endif %}
+
+    </form>
+
+{% endblock %}
+
