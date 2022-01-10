@@ -15,8 +15,8 @@
     {% for quiz in quizes %}
 
     <p>
-        <span  ><a href="{% url 'own_quiz' type='custom_quiz' pk=quiz.pk%}">{{ quiz.title }}</a></span>
-        <span ><a href="{% url 'delete'  pk=quiz.pk%}">Удалить</a></span>
+        <span class="quiz_list" ><a href="{% url 'own_quiz' type='custom_quiz' pk=quiz.pk%}">{{ quiz.title }}</a></span>
+        <span class="delete"><a href="{% url 'delete'  pk=quiz.pk%}">Удалить</a></span>
 
     </p>
 
@@ -24,10 +24,10 @@
 
 {% else %}
 
-<div >У вас нет созданных квизов!</div>
+<div class="no_quizes">У вас нет созданных квизов!</div>
 
 {% endif %}
 
-<div ><a href="{% url 'show_first_page'  %}">На главную страницу</a></div>
+<div class="restart"><a href="{% url 'show_first_page'  %}">На главную страницу</a></div>
 
 {% endblock %}

@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% load static %}
+
+
+{% block title %}
+
+    <title>Созданные квизы</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+
+    {% csrf_token %}
+
+        {{ form.text}}
+        {{ form.quiz}}
+
+    <div class="choice_text">
+    {{ form_a.as_p}}
+</div>
+
+        <button type="submit" class="quiz_add_button" name = 'create_quiz' >ГОТОВО</button>
+        <button type="submit" class="question_add_button" name = 'add_question' >Добавить еще вопрос</button>
+
+    </form>
+
+
+{% endblock %}

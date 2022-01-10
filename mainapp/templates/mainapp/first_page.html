@@ -10,11 +10,11 @@
 
 {% block content %}
 
-    <div >Добро пожаловать в приложение "Квиз".
+    <div class="greetings">Добро пожаловать в приложение "Квиз".
         Вы можете пройти стандарнтый квиз или создавать свои квизы!</div>
-    <div ><a href="{% url 'create_quiz' %}" style="text-decoration: none">Создать квиз</a></div>
-    <div ><a href="{% url 'own_quiz' type='standard_quiz' pk='standard_quiz' %}" style="text-decoration: none">
+    <div class="create_quiz"><a href="{% url 'create_quiz' %}" style="text-decoration: none">Создать квиз</a></div>
+    <div class="run_quiz"><a href="{% url 'own_quiz' type='standard_quiz' pk='standard_quiz' %}" style="text-decoration: none">
         Начать стандартный квиз</a></div>
-    <div ><a href="{% url 'created_quizes'%}" style="text-decoration: none">Созданные квизы</a></div>
+    <div class="created_quiz"><a href="{% url 'created_quizes'%}" style="text-decoration: none">Созданные квизы</a></div>
 
 {% endblock %}

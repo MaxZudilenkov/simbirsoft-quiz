@@ -142,3 +142,110 @@ label input[type='checkbox'] {
     text-decoration: none;
     color: #2a9102;
 }
+
+.no_quizes {
+    background: #61a3c8;
+    font-size: x-large;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.quiz_list {
+    font-size: 25px;
+    font-family: Verdana;
+    position: relative;
+    left: 2%;
+    padding-right: 20px;
+}
+
+.quiz_list a {
+    text-decoration: none;
+    color:cornflowerblue;
+}
+
+.delete {
+    font-size: 15px;
+    font-family: Tahoma;
+    position: relative;
+    top: 10%;
+    left: 2%;
+    display: inline-block;
+}
+
+.delete a {
+    text-decoration: none;
+    color: red;
+}
+
+.quiz_title {
+    display: inline-block;
+    font-size: x-large;
+    position: absolute;
+    width:20%;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.quiz_create_button {
+    display: inline-block;
+    font-size: large;
+    position: absolute;
+    color: #1a79c1;
+    width:15%;
+    top: 47%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.question_title {
+    display: inline-block;
+    font-size: x-large;
+    position: absolute;
+    width:70%;
+    height:10%;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.choice_text {
+    font-size: 20px;
+    position: absolute;
+    width:20%;
+    height:10%;
+    top: 40%;
+    left: 50%;
+    margin-right: -20%;
+    margin-top: 2px;
+    transform: translate(-50%, -50%)
+}
+
+.question_add_button {
+    display: inline-block;
+    font-size: large;
+    position: absolute;
+    color: #1a79c1;
+    top: 80%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.quiz_add_button {
+    display: inline-block;
+    font-size: large;
+    position: absolute;
+    color: #1a79c1;
+    width:15%;
+    top: 90%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
