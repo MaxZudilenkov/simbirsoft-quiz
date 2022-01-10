@@ -72,3 +72,73 @@ class BaseTestCase(TestCase):
         )
 
         self.assertEqual(quiz_result_service.get_result(), 0.00)
+
+
+class UserTestCase(TestCase):
+    def setUp(self):
+        choices: List[ChoiceDTO] = [
+            ChoiceDTO(
+                "2-1-1",
+                "Орел",
+                True
+            ),
+            ChoiceDTO(
+                "2-1-2",
+                "Тигр",
+                False
+            )
+        ]
+
+        questions: List[QuestionDTO] = [
+            QuestionDTO(
+                "2-1",
+                "Кто является птицей?",
+                choices
+            )
+        ]
+
+        self.quiz_dto = QuizDTO(
+            "2",
+            "Птицы",
+            questions
+        )
+
+    def test_success_quiz_result(self):
+        answers: List[AnswerDTO] = [
+            AnswerDTO(
+                "2-1",
+                ["2-1-1"]
+            )
+        ]
+
+        answers_dto = AnswersDTO(
+            "2",
+            answers
+        )
+
+        quiz_result_service = QuizResultService(
+            self.quiz_dto,
+            answers_dto
+        )
+
+        self.assertEqual(quiz_result_service.get_result(), 1.00)
+
+    def test_failure_quiz_result(self):
+        answers: List[AnswerDTO] = [
+            AnswerDTO(
+                "2-1",
+                ["2-1-2"]
+            )
+        ]
+
+        answers_dto = AnswersDTO(
+            "2",
+            answers
+        )
+
+        quiz_result_service = QuizResultService(
+            self.quiz_dto,
+            answers_dto
+        )
+
+        self.assertEqual(quiz_result_service.get_result(), 0.00)
