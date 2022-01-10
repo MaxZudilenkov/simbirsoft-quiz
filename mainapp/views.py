@@ -1,12 +1,12 @@
 from django.core.paginator import Paginator
-from django.forms import modelformset_factory
 from django.shortcuts import render, redirect
+from django.forms import modelformset_factory
 from django.views.generic import ListView
-
 from mainapp.forms import CreateQuizForm, CreateQuestionForm
 from mainapp.models import UserAnswers, UserQuestion, UserQuiz, UserChoice
 from mainapp.my_quiz import Myquiz
-from quiz.dto import QuizDTO, QuestionDTO, ChoiceDTO
+from quiz.dto import AnswersDTO, AnswerDTO, QuizDTO, QuestionDTO, ChoiceDTO
+from quiz.services import QuizResultService
 
 
 def create_quiz(request):
@@ -138,3 +138,24 @@ def delete_quiz(request, pk):
     quiz = UserQuiz.objects.get(pk=pk)
     quiz.delete()
     return redirect('created_quizes')
+
+
+def show_result(request, type, pk):
+    """
+    Функция для отображения результата прохождения квиза
+    """
+    if type == "standard_quiz":
+        quiz = Myquiz
+    else:
+        quiz = create_own_quiz(request)
+    MyAnswers = AnswersDTO(
+        '1',
+        [
+            AnswerDTO(i.question_uuid, i.answer) for i in UserAnswers.objects.all()
+        ]
+    )
+    my_result_service = QuizResultService(quiz_dto=quiz, answers_dto=MyAnswers)
+    result = my_result_service.get_result()
+    percent = int(result * 100)
+    context = {'percent': percent}
+    return render(request, 'mainapp/show_result.html', context)
