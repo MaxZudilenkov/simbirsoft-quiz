@@ -86,6 +86,16 @@ class UserTestCase(TestCase):
                 "2-1-2",
                 "Тигр",
                 False
+            ),
+            ChoiceDTO(
+                "2-1-3",
+                "Ворон",
+                True
+            ),
+            ChoiceDTO(
+                "2-1-4",
+                "Лиса",
+                False
             )
         ]
 
@@ -107,8 +117,9 @@ class UserTestCase(TestCase):
         answers: List[AnswerDTO] = [
             AnswerDTO(
                 "2-1",
-                ["2-1-1"]
-            )
+                ["2-1-1", '2-1-3']
+            ),
+
         ]
 
         answers_dto = AnswersDTO(
@@ -127,7 +138,7 @@ class UserTestCase(TestCase):
         answers: List[AnswerDTO] = [
             AnswerDTO(
                 "2-1",
-                ["2-1-2"]
+                ["2-1-1", '2-1-2']
             )
         ]
 
