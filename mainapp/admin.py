@@ -26,4 +26,3 @@ admin.site.register(UserAnswers, UserAnswerAdmin)
 admin.site.register(UserQuiz, UserQuizAdmin)
 admin.site.register(UserQuestion, UserQuestionAdmin)
 admin.site.register(UserChoice, UserChoiceAdmin)
-

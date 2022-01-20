@@ -14,7 +14,7 @@ class QuizResultService():
         for question in self.quiz_dto.questions:
             right_answers.append([])
             for choice in question.choices:
-                if choice.is_correct == True:
+                if choice.is_correct:
                     right_answers[count].append(choice.uuid)
             count = count + 1
         right_user_answers = len(right_answers)

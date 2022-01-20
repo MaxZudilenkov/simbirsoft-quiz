@@ -11,19 +11,29 @@
 
 {% block content %}
 
+
     <form method="post">
+        <button type="submit" class="question_add_button" name = 'add_question' >Добавить еще вопрос</button>
+        <button type="submit" class="quiz_add_button" name = 'create_quiz' >ГОТОВО</button>
+
 
     {% csrf_token %}
 
+
         {{ form.text}}
         {{ form.quiz}}
+
+
+
 
     <div class="choice_text">
     {{ form_a.as_p}}
 </div>
 
-        <button type="submit" class="quiz_add_button" name = 'create_quiz' >ГОТОВО</button>
-        <button type="submit" class="question_add_button" name = 'add_question' >Добавить еще вопрос</button>
+
+        <div class="middle_div"></div>
+
+
 
     </form>
 

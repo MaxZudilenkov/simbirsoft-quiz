@@ -1,11 +1,12 @@
 .greetings {
-    background:cadetblue;
-    font-size: x-large;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    background: cadetblue;
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 80vw;
+    height: 6vw;
+    top: 20%;
+    left: 10%;
 }
 
 .start_test {
@@ -19,42 +20,46 @@
     transform: translate(-50%, -50%)
 }
 
+
 .create_quiz {
     display: inline-block;
     background-color: #d9c543;
-    font-size: xx-large;
-    position: absolute;
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 15vw;
+    height: 3vw;
     top: 70%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    left: 45%;
+
 }
 
 .run_quiz {
     display: inline-block;
     background-color: #ec67a5;
-    font-size: xx-large;
-    position: absolute;
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 22vw;
+    height: 3vw;
     top: 70%;
-    left: 30%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    left: 5%;
 }
 
 .created_quiz {
     display: inline-block;
     background-color: #a9ffa0;
-    font-size: xx-large;
-    position: absolute;
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 20vw;
+    height: 3vw;
     top: 70%;
-    left: 68%;
-    margin-right: -20%;
-    transform: translate(-50%, -50%)
+    left: 25%;
 }
 
 .question {
     font-size: 30px;
-    font-family: Verdana;
     position: absolute;
     top: 10%;
     left: 20%;
@@ -155,7 +160,6 @@ label input[type='checkbox'] {
 
 .quiz_list {
     font-size: 25px;
-    font-family: Verdana;
     position: relative;
     left: 2%;
     padding-right: 20px;
@@ -163,12 +167,11 @@ label input[type='checkbox'] {
 
 .quiz_list a {
     text-decoration: none;
-    color:cornflowerblue;
+    color: cornflowerblue;
 }
 
 .delete {
     font-size: 15px;
-    font-family: Tahoma;
     position: relative;
     top: 10%;
     left: 2%;
@@ -180,72 +183,75 @@ label input[type='checkbox'] {
     color: red;
 }
 
+
 .quiz_title {
-    display: inline-block;
-    font-size: x-large;
-    position: absolute;
-    width:20%;
-    top: 40%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 20vw;
+    height: 4vw;
+    top: 70%;
+    left: 30%;
+    margin-bottom: 10%;
 }
 
 .quiz_create_button {
-    display: inline-block;
-    font-size: large;
-    position: absolute;
     color: #1a79c1;
-    width:15%;
-    top: 47%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 20vw;
+    height: 4vw;
+    top: 50%;
+    left: 36%;
+    margin-bottom: 10%;
 }
 
+
 .question_title {
-    display: inline-block;
-    font-size: x-large;
-    position: absolute;
-    width:70%;
-    height:10%;
-    top: 20%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 70vw;
+    height: 3vw;
+    top: 80%;
+    left: 15%;
+    margin-top: 10%;
+    margin-bottom: 20px;
 }
 
 .choice_text {
-    font-size: 20px;
-    position: absolute;
-    width:20%;
-    height:10%;
-    top: 40%;
-    left: 50%;
-    margin-right: -20%;
-    margin-top: 2px;
-    transform: translate(-50%, -50%)
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 30vw;
+    height: 1vw;
+    top: 10%;
+    left: 37%;
+
 }
+
 
 .question_add_button {
     display: inline-block;
-    font-size: large;
-    position: absolute;
-    color: #1a79c1;
-    top: 80%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 20vw;
+    height: 3vw;
+    left: 25%;
+    margin-top: 40px%;
+    background: #6d74ff;
 }
 
 .quiz_add_button {
     display: inline-block;
-    font-size: large;
-    position: absolute;
-    color: #1a79c1;
-    width:15%;
-    top: 90%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    font-size: calc(1vw + 1vh);
+    position: relative;
+    text-align: center;
+    width: 20vw;
+    height: 3vw;
+    left: 25%;
+    margin-top: 40px%;
+    background: #aee363;
 }

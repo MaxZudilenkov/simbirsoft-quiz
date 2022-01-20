@@ -38,12 +38,21 @@ def create_own_quiz(request):
     for one_question in current_quiz.question.all():
         own_choices = []
         for one_choice in one_question.choice.all():
-            own_choices.append(ChoiceDTO(uuid=str(current_quiz.pk) + '-' + str(one_question.pk)
-                                              + '-' + str(one_choice.pk), text=one_choice.text,
-                                         is_correct=one_choice.is_correct))
+            own_choices.append(
+                ChoiceDTO(
+                    uuid=str(
+                        current_quiz.pk) + '-' + str(
+                        one_question.pk) + '-' + str(
+                        one_choice.pk),
+                    text=one_choice.text,
+                    is_correct=one_choice.is_correct))
         own_questions.append(
-            QuestionDTO(uuid=str(current_quiz.pk) + '-' + str(one_question.pk), text=one_question.text,
-                        choices=own_choices))
+            QuestionDTO(
+                uuid=str(
+                    current_quiz.pk) + '-' + str(
+                    one_question.pk),
+                text=one_question.text,
+                choices=own_choices))
     return OwnQuiz
 
 
@@ -65,9 +74,11 @@ def create_questions(request):
     """
     Функция для создания экземпляров моделей UserQuestion, UserChoice
     """
-    choice_formset = modelformset_factory(UserChoice, fields=('text', 'is_correct'), extra=4)
+    choice_formset = modelformset_factory(
+        UserChoice, fields=('text', 'is_correct'), extra=4)
     if request.method == 'POST':
-        form = CreateQuestionForm(request.POST, initial={'quiz': UserQuiz.objects.last()})
+        form = CreateQuestionForm(request.POST, initial={
+                                  'quiz': UserQuiz.objects.last()})
         form_a = choice_formset(request.POST)
         if form.is_valid() and form_a.is_valid():
             form_instance = form.save()
@@ -100,18 +111,23 @@ def show_own_quiz(request, type, pk):
     current_question_uuid = ''
     for question in page.object_list:
         current_question_uuid = question.uuid
-    current_question = UserAnswers.objects.get(question_uuid=current_question_uuid).answer
-    context = {"my_questions": page.object_list, 'page': page, 'current_question': current_question, }
+    current_question = UserAnswers.objects.get(
+        question_uuid=current_question_uuid).answer
+    context = {"my_questions": page.object_list,
+               'page': page, 'current_question': current_question, }
     if request.method == "POST":
         user_answer = request.POST.getlist("question_choice")
         next_question = request.POST.get("next")
         previous_question = request.POST.get("previous")
         question_uuid = request.POST.get("question_uuid")
-        UserAnswers.objects.update_or_create(question_uuid=question_uuid, defaults={"answer": user_answer})
-        if previous_question != None:
-            redirect_page = request.path_info + "?page=" + str(page.previous_page_number())
-        elif next_question != None:
-            redirect_page = request.path_info + "?page=" + str(page.next_page_number())
+        UserAnswers.objects.update_or_create(
+            question_uuid=question_uuid, defaults={"answer": user_answer})
+        if previous_question is not None:
+            redirect_page = request.path_info + \
+                "?page=" + str(page.previous_page_number())
+        elif next_question is not None:
+            redirect_page = request.path_info + \
+                "?page=" + str(page.next_page_number())
         else:
             redirect_page = '/result/' + type + '/' + pk
         return redirect(redirect_page)
@@ -149,11 +165,9 @@ def show_result(request, type, pk):
     else:
         quiz = create_own_quiz(request)
     MyAnswers = AnswersDTO(
-        '1',
-        [
-            AnswerDTO(i.question_uuid, i.answer) for i in UserAnswers.objects.all()
-        ]
-    )
+        '1', [
+            AnswerDTO(
+                i.question_uuid, i.answer) for i in UserAnswers.objects.all()])
     my_result_service = QuizResultService(quiz_dto=quiz, answers_dto=MyAnswers)
     result = my_result_service.get_result()
     percent = int(result * 100)

@@ -27,7 +27,8 @@ class UserQuiz(models.Model):
 
 
 class UserQuestion(models.Model):
-    quiz = models.ForeignKey(UserQuiz, on_delete=models.CASCADE, related_name='question')
+    quiz = models.ForeignKey(
+        UserQuiz, on_delete=models.CASCADE, related_name='question')
     text = models.TextField()
 
     class Meta:
@@ -39,9 +40,11 @@ class UserQuestion(models.Model):
 
 
 class UserChoice(models.Model):
-    question = models.ForeignKey(UserQuestion, on_delete=models.CASCADE, related_name='choice')
+    question = models.ForeignKey(
+        UserQuestion, on_delete=models.CASCADE, related_name='choice')
     text = models.CharField(verbose_name="Вариант ответа", max_length=200)
-    is_correct = models.BooleanField(default=False, verbose_name="Правильный ответ")
+    is_correct = models.BooleanField(
+        default=False, verbose_name="Правильный ответ")
 
     class Meta:
         verbose_name = "Вариант ответа"

@@ -13,10 +13,12 @@
 <form method="post">
     {% csrf_token %}
 
-        {{ form.title }}
-        {{ form.media }}
+    <div class="quiz_title">{{ form.title }}
+        {{ form.media }}</div>
 
-    <button type="submit" class="quiz_create_button">Начать создание квиза</button>
+
+<div> <button type="submit" class="quiz_create_button">Начать создание квиза</button></div>
+
 </form>
 
 {% endblock %}
